@@ -1,0 +1,43 @@
+li{
+    width: fit-content;
+    font-size: 2rem;
+    border-bottom: 2px solid black;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    cursor: pointer;
+}
+span{
+    font-weight: bold;
+}
+#listDiv{
+    display: flex;
+    justify-content: center;
+}
+.paginationDiv{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginationDiv>*{
+    margin: 5px;
+}
+.paginationDiv>p{
+    font-size: 2rem;
+}
+
+.countriesPerPage{
+    font-style:italic;
+
+}
+.countriesPerPage:hover{
+color: lightblue;
+transform: scale(1.1);
+cursor: pointer;
+}
+
+.active{
+    color: lightblue;
+    text-decoration: underline;
+}

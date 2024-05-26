@@ -1,0 +1,15 @@
+<div class="row" id="listDiv">
+    <div class="col-md-10" >
+        <div *ngIf="(selectedCountry$ | async) as country; else loading">
+            <h3>{{country.countryName}} <span><img src="https://flagcdn.com/w20/{{ country.countryCode2.toLowerCase() }}.png" alt="{{country.countryName}}" />
+            </span></h3>
+            <h4>Spoken Languages: </h4>
+        <ol>
+          <li *ngFor="let language of country.countryLanguages">
+            {{ language.languageName }} <span *ngIf="language.official">(official)</span>
+        </li>
+        </ol>
+      </div>
+      <ng-template #loading>Loading countries...</ng-template>
+    </div>
+  </div>

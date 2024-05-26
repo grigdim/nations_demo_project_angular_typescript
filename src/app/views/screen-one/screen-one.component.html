@@ -1,0 +1,21 @@
+<div class="row" id="listDiv">
+  <div class="col-md-10" >
+    <div *ngIf="(countries$ | async) as countries; else loading">
+      <ol>
+        <li *ngFor="let country of countries" (click)="selectCountry(country)">
+          <span>Country Name:</span>  {{ country.countryName }} | <span>Country Area:</span> {{ country.countryArea }} | <span>Country Code 2:</span> {{ country.countryCode2 }}
+        </li>
+      </ol>
+    </div>
+    <div class="paginationDiv">
+      <button type="button" class="btn btn-default" (click)="onChangePage('left')">&lt;</button>
+      <p>{{page+1}}</p>
+      <button type="button" class="btn btn-default" (click)="onChangePage('right')">&gt;</button>
+      <p>Countries per page:</p>
+      <p class="countriesPerPage" [class.active]="countriesPerPage === 5" (click)="onChangeCountriesPerPage(5)">5</p>
+      <p class="countriesPerPage" [class.active]="countriesPerPage === 10" (click)="onChangeCountriesPerPage(10)">10</p>
+      <p class="countriesPerPage" [class.active]="countriesPerPage === 15" (click)="onChangeCountriesPerPage(15)">15</p>      
+    </div>
+    <ng-template #loading>Loading countries...</ng-template>
+  </div>
+</div>

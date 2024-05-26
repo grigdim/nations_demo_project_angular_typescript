@@ -1,0 +1,92 @@
+
+<div class="search-filter">  
+  <div id="selectDiv">
+    <label for="selectElement">Choose a region:</label>
+    <select id="selectElement" [(ngModel)]="selectedRegion" (change)="onRegionSelected($event.target)">
+      <option value="">All Regions</option>
+      <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+    </select>
+    <label for="startYearSelect">Choose start year:</label>
+    <select id="startYearSelect" [(ngModel)]="selectedStartYear" (change)="onStartYearSelected($event.target)">
+      <option *ngFor="let year of years.slice().reverse()" [value]="year">{{ year }}</option>
+    </select>
+    <label for="endYearSelect">Choose end year:</label>
+    <select id="endYearSelect" [(ngModel)]="selectedEndYear" (change)="onEndYearSelected($event.target)">
+      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+    </select>
+  </div>
+  
+</div>
+
+<div *ngIf="(continents$ | async) as continents; else loading">
+  <table class="centered-table">
+    <thead>
+      <tr>
+        <th>Continent Name</th>
+        <th>Continent Regions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let continent of continents; let i = index">
+        <td (click)="toggleVisibility(continent.continentName,'continent')" class="cursorPointer">
+          {{ continent.continentName }}
+        </td>
+        <td [hidden]="shouldHideElement(continent.continentName, 'continent')">
+          <table>
+            <thead>
+              <tr>
+                <th>Region Name</th>
+                <th>Region Countries</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let region of continent.regions; let j = index">
+                <td (click)="toggleVisibility(region.regionName,'region')" class="cursorPointer">
+                  {{ region.regionName }}
+                </td>
+                <td [hidden]="shouldHideElement(region.regionName, 'region')">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Country Name</th>
+                        <th>Country Stats</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let country of region.countries; let k = index">
+                        <td (click)="toggleVisibility(country.countryName,'country')" class="cursorPointer">
+                          {{ country.countryName }}
+                        </td>
+                        <td [hidden]="shouldHideElement(country.countryName, 'country')">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Year</th>
+                                <th>Population</th>
+                                <th>GDP</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let year of country.countryStats">
+                                <td>{{ year.id.year }}</td>
+                                <td>{{ year.population }}</td>
+                                <td>{{ year.gdp }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #loading>Loading continents...</ng-template>
+  

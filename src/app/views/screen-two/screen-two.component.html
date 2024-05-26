@@ -1,0 +1,24 @@
+<div *ngIf="(countries$ | async) as countries; else loading">
+    <table class="centered-table">
+      <thead>
+        <tr>
+          <th>Country Name</th>
+          <th>Country Code 3</th>
+          <th>Year</th>
+          <th>Population</th>
+          <th>GDP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countries">
+          <td>{{ country.countryName }}</td>
+          <td>{{ country.countryCode3 }}</td>
+          <td>{{ country.year }}</td>
+          <td>{{ country.population }}</td>
+          <td>{{ country.gdp }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading>Loading countries...</ng-template>
+  

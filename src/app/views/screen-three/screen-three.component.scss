@@ -1,0 +1,62 @@
+.search-filter {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.search-filter label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.search-filter select,
+.search-filter input[type="date"] {
+  font-size: 1.5rem;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-filter select {
+  width: 200px; /* Adjust width as needed */
+}
+
+.search-filter input[type="date"] {
+  width: 150px; /* Adjust width as needed */
+}
+
+#selectDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+#selectDiv>*{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.centered-table {
+    width: 100%;
+    border-collapse: collapse;
+    
+    th, td {
+     font-size: 1.75rem;
+     text-align: center;
+     padding: 8px;
+     border: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+  }
+.cursorPointer{
+  cursor: pointer;
+}
+.cursorPointer:hover {
+  background-color: lightgray;
+}
+  
